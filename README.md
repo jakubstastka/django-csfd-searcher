@@ -1,6 +1,6 @@
 # Django ČSFD TOP 1000 Searcher
 
-This is a portfolio project showcasing building a simple **Django** app with a search capabilities, and a simple scraper using **Requests** library.
+This is a portfolio project showcasing building a simple **Django** app with a search capability, and a simple scraper using **Requests** library.
 
 Frontend is styled with **Tailwind CSS** using CDN.
 

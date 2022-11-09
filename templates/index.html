@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ČSFD Searcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-300">
+    <div class="container mx-auto w-3/4 p-5 mt-10">
+      <div class="flex justify-center">
+        <div class="flex flex-col items-center space-y-6 bg-white rounded-lg p-6 shadow-lg">
+          <div class="text-4xl font-bold tracking-wider text-rose-600">ČSFD TOP 1000 Movies</div>
+          <div>
+            <form action="{% url 'search' %}" method="get">
+                <input name="search" class="text-center bg-gray-100 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-rose-500 focus:border-rose-500 block w-full p-2.5" placeholder="Please type your search input" required/>
+            </div>
+            <div>
+                <button
+                type="submit"
+                class="px-4 py-2 bg-rose-600 text-white font-medium text-xs uppercase rounded shadow-md hover:bg-rose-700 hover:shadow-lg transition duration-150 ease-in-out"
+                >
+                Search
+                </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

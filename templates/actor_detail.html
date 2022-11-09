@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ČSFD Searcher: {{object.name}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-300">
+    <div class="container mx-auto w-3/4 mt-10 p-5">
+      <div class="bg-white p-4 rounded-lg shadow-lg">
+        <div>
+        <a href="{% url 'index' %}">
+            <div class="absolute left-3 top-3 w-16 h-16 rounded-full bg-white font-bold  hover:bg-rose-600 text-rose-600 hover:text-white">
+                <div class="absolute left-2.5 top-5">Home</div>
+            </div>
+        </a>
+        </div>
+        <div class="text-gray-600 uppercase">Actor's name</div>
+        <div class="text-3xl text-rose-600 pb-4">{{object.name}}</div>
+        <div class="text-gray-600 uppercase">Movies</div>
+        <div class="flex flex-row flex-wrap justify-start">
+            {% for actor in object.movies.all %} 
+                <a href="{% url 'movie-detail' actor.slug %}"><div class="bg-rose-200 m-2 p-2 rounded-md shadow-md hover:bg-rose-600 hover:text-white">{{actor}}</div></a>
+            {% endfor %}
+        <div>
+      </div>
+    </div>
+  </body>
+</html>

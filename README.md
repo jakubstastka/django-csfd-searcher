@@ -31,3 +31,9 @@ The scraper is a management script **get_csfd_top_movies**, so just pwd into the
 ## Tests
 
 Since we are not doing much "behind the scenes", there is only one test to make sure model instanes get slug generated upon creation. This is a custom logic in the model's save method (or the base model's, to be precise).
+
+## Django Admin features
+
+Login/pass: admin/admin
+
+Models have a property showing how many actors a movie has and vice versa, which shows in Django Admin list display. I thought it was cool.

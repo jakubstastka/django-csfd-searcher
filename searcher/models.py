@@ -5,6 +5,7 @@ from django.utils.text import slugify
 class BaseModel(models.Model):
     name = models.TextField(db_index=True)
     slug = models.SlugField()
+    csfd_id = models.TextField(db_index=True, default=None, null=True)
 
     class Meta:
         abstract = True

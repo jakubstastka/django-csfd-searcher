@@ -1,3 +1,5 @@
+import re
+
 import requests
 from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand
@@ -73,9 +75,13 @@ class Command(BaseCommand):
                     actors = actors_parent_div.find_all("a", {"class": None})
 
                     for actor in actors:
+                        # We need to get the unique CSFD ID as there are more actors sharing the same name.
+                        actor_csfd_id = re.search(r"([0-9]+)", actor["href"]).group()
+
                         # get_or_create(), because actor might already exist from previous movies
                         actor_obj, created = Actor.objects.get_or_create(
-                            name=actor.contents[0]
+                            name=actor.contents[0],
+                            csfd_id=actor_csfd_id
                         )
 
                         if not created:

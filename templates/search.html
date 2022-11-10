@@ -49,7 +49,7 @@
                 {% for actor in actors %}
                 <li>
                   <a
-                    href="{% url 'actor-detail' actor.slug %}"
+                    href="{% url 'actor-detail' actor.pk %}"
                     class="text-gray-800 hover:text-rose-600 hover:underline"
                     >{{ actor.name }}</a
                   >

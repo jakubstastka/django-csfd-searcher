@@ -21,7 +21,7 @@
         <div class="text-gray-600 uppercase">Actors</div>
         <div class="flex flex-row flex-wrap justify-start">
             {% for actor in object.actors.all %} 
-                <a href="{% url 'actor-detail' actor.slug %}"><div class="bg-rose-200 m-2 p-2 rounded-md shadow-md hover:bg-rose-600 hover:text-white">{{actor}}</div></a>
+                <a href="{% url 'actor-detail' actor.pk %}"><div class="bg-rose-200 m-2 p-2 rounded-md shadow-md hover:bg-rose-600 hover:text-white">{{actor}}</div></a>
             {% endfor %}
         <div>
       </div>

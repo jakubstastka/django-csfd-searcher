@@ -3,9 +3,9 @@ from django.utils.text import slugify
 
 
 class BaseModel(models.Model):
-    name = models.TextField(db_index=True)
-    slug = models.SlugField()
-    csfd_id = models.TextField(db_index=True, default=None, null=True)
+    name = models.CharField(db_index=True, max_length=256)
+    slug = models.SlugField(db_index=True)
+    csfd_id = models.IntegerField(db_index=True, null=True)
 
     class Meta:
         abstract = True

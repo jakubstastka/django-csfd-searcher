@@ -52,10 +52,12 @@ class Command(BaseCommand):
             for movie in movies:
                 # To see progress again
                 print(f"Scraping info about movie {movie['title']}")
+                
+                movie_csfd_id = int(re.search(r"([0-9]+)", movie["href"]).group())
 
                 # I wanted to use plain .create() as I assume TOP 1000 list should have 1000 unique items.
                 # But, in the words of Quellcrist Falconer: 'Assume nothing. Only then can you truly see what you’re dealing with.'
-                movie_obj, created = Movie.objects.get_or_create(name=movie["title"])
+                movie_obj, created = Movie.objects.get_or_create(name=movie["title"], csfd_id=movie_csfd_id)
 
                 if not created:
                     print(
@@ -76,12 +78,13 @@ class Command(BaseCommand):
 
                     for actor in actors:
                         # We need to get the unique CSFD ID as there are more actors sharing the same name.
-                        actor_csfd_id = re.search(r"([0-9]+)", actor["href"]).group()
+                        actor_csfd_id = int(re.search(r"([0-9]+)", actor["href"]).group())
 
                         # get_or_create(), because actor might already exist from previous movies
-                        actor_obj, created = Actor.objects.get_or_create(
-                            name=actor.contents[0],
-                            csfd_id=actor_csfd_id
+                        # an actor might have a new name (marriage, etc)
+                        actor_obj, created = Actor.objects.update_or_create(
+                            csfd_id=actor_csfd_id,
+                            defaults={'name': actor.contents[0]}
                         )
 
                         if not created:
